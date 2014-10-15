@@ -1,0 +1,23 @@
+extends layout
+
+block content
+	h1 Barforama
+	h3 Menu of Desserts
+
+	p: a(href="/about") About Us
+
+	//- Post has an UNLIMITED amount of data you can send
+	//- whereas Get is limited
+	form(method="post", action="/dessertSubmit")
+		input(type="text", name="name", placeholder="Name")
+		input(type="text", name="cost", placeholder="Cost")
+		input(type="text", name="flavor", placeholder="Flavor")
+		input(type="text", name="rating", placeholder="Rating")
+		input(type="submit")
+
+	ul
+		for dessert in desserts
+			li
+				h5= dessert.name
+				p: em= dessert.flavor
+				p: strong This dish is #{dessert.rating}/10
